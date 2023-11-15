@@ -14,6 +14,7 @@ class ProfileSeeder extends Seeder
     public function run(): void
     {
         Profile::create([
+            'rut' => "21.177.605-6",
             'fullname' => "Vicente Ignacio Alarcón Campillay",
             'description' => "Soy un estudiante de Ingeniería Civil en Computación e Informatica de la Universidad Católica del Norte. Actualmente estoy en mi tercer año de carrera, para ser especifico en el sexto semestre. Soy una persona que le gustan los desafios, aprender cosas nuevas, y que le gusta trabajar en equipo. Disfruto de programar, y de aprender nuevas tecnologias.",
             'age' => 20,

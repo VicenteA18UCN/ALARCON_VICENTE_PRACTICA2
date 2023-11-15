@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'index']);
+Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'profile']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

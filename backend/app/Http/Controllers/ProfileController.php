@@ -6,14 +6,20 @@ use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Models\Interest;
 use App\Models\Tool;
+use TheSeer\Tokenizer\Exception;
 
 class ProfileController extends Controller
 {
-    public function index()
+    public function profile()
     {
-        $profile = Profile::get();
-        $interests = Interest::get();
-        $tools = Tool::get();
-        return response()->json(['profile' => $profile, 'interests' => $interests, 'tools' => $tools]);
+
+        try {
+            $profile = Profile::where('rut', "21.177.605-6")->first();
+            $interests = Interest::all()->where('profile_id', 1);
+            $tools = Tool::all()->where('profile_id', 1);
+            return response()->json(['profile' => $profile, 'interest' => $interests, 'tools' => $tools]);
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
     }
 }
