@@ -4,11 +4,11 @@ import ListGroup from "react-bootstrap/ListGroup";
 function Interests({
   name,
   description,
-  showImage = false,
+  image,
 }: {
   name: string;
   description: string;
-  showImage: boolean;
+  image: string | null;
 }) {
   return (
     <ListGroup.Item
@@ -19,10 +19,11 @@ function Interests({
         <div className="fw-bold justify">{name}</div>
         {description}
       </div>
-      {showImage && (
+      {image && (
         <Image
-          src={require("../assets/images/Laravel.jpg")}
-          style={{ width: "50%", height: "50%" }}
+          src={require(`../assets/${image}`)}
+          className="img-thumbnail w-25 h-75 float-end"
+          alt="..."
         />
       )}
     </ListGroup.Item>

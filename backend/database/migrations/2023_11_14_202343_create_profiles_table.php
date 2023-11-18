@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('facebook');
             $table->string('github');
+            $table->string('image');
             $table->timestamps();
         });
     }

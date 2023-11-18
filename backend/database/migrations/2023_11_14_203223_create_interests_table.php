@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description', 4500);
+            $table->string('image')->nullable();
             $table->foreignId('profile_id')->constrained('profiles');
             $table->timestamps();
         });

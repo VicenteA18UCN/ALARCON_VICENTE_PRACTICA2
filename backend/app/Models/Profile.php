@@ -19,7 +19,8 @@ class Profile extends Model
         'email',
         'phone',
         'facebook',
-        'github'
+        'github',
+        'image'
     ];
 
     public function interests()

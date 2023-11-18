@@ -23,7 +23,8 @@ class ProfileSeeder extends Seeder
             'email' => "vicente.alarcon@alumnos.ucn.cl",
             'phone' => "9 7777 7777",
             'facebook' => "https://www.facebook.com/vicente.alarcon.90",
-            'github' => "https://github.com/VicenteA18UCN"
+            'github' => "https://github.com/VicenteA18UCN",
+            'image' => "images/personal.jpg"
         ]);
     }
 }

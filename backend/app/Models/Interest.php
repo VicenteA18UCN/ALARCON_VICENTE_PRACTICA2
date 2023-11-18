@@ -12,7 +12,8 @@ class Interest extends Model
     protected $fillable = [
         'name',
         'description',
-        'profile_id'
+        'profile_id',
+        'image'
     ];
 
 

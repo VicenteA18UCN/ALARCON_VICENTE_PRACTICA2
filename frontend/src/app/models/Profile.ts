@@ -1,3 +1,5 @@
+import Interest from './Interest';
+import Tool from './Tool';
 export default interface Profile {
     fullname: string;
     description:string;
@@ -8,4 +10,7 @@ export default interface Profile {
     phone: string;
     facebook: string;
     github: string;
+    image: string;
+    interests: Interest[];
+    tools: Tool[];
 }

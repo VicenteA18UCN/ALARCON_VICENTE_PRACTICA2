@@ -15,9 +15,23 @@ class ProfileController extends Controller
 
         try {
             $profile = Profile::where('rut', "21.177.605-6")->first();
-            $interests = Interest::all()->where('profile_id', 1);
-            $tools = Tool::all()->where('profile_id', 1);
-            return response()->json(['profile' => $profile, 'interest' => $interests, 'tools' => $tools]);
+            $interests = Interest::all()->where('profile_id', $profile->id);
+            $tools = Tool::all()->where('profile_id', $profile->id);
+            $response = [
+                'fullname' => $profile->fullname,
+                'email' => $profile->email,
+                'location' => $profile->location,
+                'phone' => $profile->phone,
+                'age' => $profile->age,
+                'description' => $profile->description,
+                'occupation' => $profile->occupation,
+                'facebook' => $profile->facebook,
+                'github' => $profile->github,
+                'image' => $profile->image,
+                'interests' => $interests,
+                'tools' => $tools
+            ];
+            return response()->json($response);
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
