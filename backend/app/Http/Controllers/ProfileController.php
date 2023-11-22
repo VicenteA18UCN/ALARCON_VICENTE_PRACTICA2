@@ -7,6 +7,7 @@ use App\Models\Profile;
 use App\Models\Interest;
 use App\Models\Tool;
 use TheSeer\Tokenizer\Exception;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -35,5 +36,43 @@ class ProfileController extends Controller
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
+    }
+
+    public function update(Request $request)
+    {
+        $fields = $request->validate(([
+            'fullname' => 'required',
+            'email' => 'required|email',
+            'location' => 'required',
+            'phone' => 'required',
+            'age' => 'required',
+            'description' => 'required',
+            'occupation' =>'required'
+        ]
+        ));
+
+        try {
+            DB::beginTransaction();
+            $profile = Profile::where('id',1) ->update([
+                'fullname'=>$fields['fullname'],
+                'email'=>$fields['email'],
+                'location'=>$fields['location'],
+                'phone'=>$fields['phone'],
+                'age'=>$fields['age'],
+                'description'=>$fields['description'],
+                'occupation'=>$fields['occupation'],
+            ]);
+            $profile = Profile::where('id',1)->first();
+            DB::commit();
+            return response()->json([
+                'message' => 'Profile updated successfully',
+                'profile' => $profile
+            ]);
+
+        } catch (Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+        }
+
     }
 }
